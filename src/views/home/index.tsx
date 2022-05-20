@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { HomeApi } from '@api'
 import { useNavigate } from 'react-router-dom'
 import { Button } from 'antd'
-
 import './index.module.less'
 
 interface Props {
@@ -21,13 +20,13 @@ function Home(props: Props) {
   }, [])
 
   const jump = () => {
-    navigate('/operation_patform')
+    navigate('/')
   }
 
   return (
     <div className="App">
-      <h1>Welcome to React Router!!!</h1>
-      <Button onClick={jump}>跳转</Button>
+      <h1>Home Page</h1>
+      <Button onClick={jump}>回到主页</Button>
     </div>
   )
 }

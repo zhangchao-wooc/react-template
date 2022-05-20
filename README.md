@@ -1,13 +1,14 @@
 # React-template
+省去搭建项目的问题，如果能帮助你，那就非常开心了！
 
 ## 模版内容
 采用当前最新的版本进行构建，主体为
 - react 18 + react-router
 - mobx + mobx-react 作为状态管理器
 - vite + vite-plugin-pages(自动生成路由)
-- antd + less 的 UI 操作
+- antd + @ant-design/icons + @ant-design/pro-layout + less 的 UI 
 - axios 接口请求
-- husy + lint-stage + commitlint + eslint + prettier 校验代码、commit-msg 的提交规范及美化代码。保持团队代码风格与提交规范一致
+- husky + lint-stage + commitlint + eslint + prettier 校验代码、commit-msg 的提交规范及美化代码。保持团队代码风格与提交规范一致
 - .vscode + editorconfig 对编辑器的风格配置，保持开发人团队的配置一致
 
 ## 模版依赖
@@ -35,12 +36,14 @@ web 框架
 
 UI 框架
 ```js
-"antd": "^4.20.5"
+"antd": "^4.20.5",                                
+"@ant-design/icons": "^4.7.0",                    // antd 的图标库
+"@ant-design/pro-layout": "^6.38.2",              // antd 的布局库
 ```
 
 css 预编译器
 ```js
-"less": "^4.1.2"                                  // 选择 less 是因为 antd 是以 less 作为底层 css 预编译器，可以更好的接入
+"less": "^4.1.2"                                  // 选择 less 是因为 antd 是以 less 作为底层 css 预编译器，可以更好的接入和自定义主题
 ```
 
 状态管理
@@ -77,6 +80,7 @@ lint 工具
 "vite": "^2.9.9",                                  // 利用 ESM 开发环境构建非常快，生产构建为 gulp
 "@vitejs/plugin-react": "^1.3.0",                  // vite 官方插件，用于支持 React 框架构建
 "vite-plugin-pages": "^0.23.0"                     // vite 官方插件，以文件系统的嵌套生成 React 或 Vue 的约定式的路由系统
+"vite-plugin-imp": "^2.1.8",                       // 按需引入资源，这里使用在 antd 样式文件的按需引入上
 ```
 
 ## 目录结构
@@ -96,6 +100,7 @@ config                         // 配置文件
 src
   asset                        // 静态文件
   components                   // 全局组建
+  layout                       // 布局
   models                       // 状态管理
   request                      // 请求配置
   views                        // 页面文件夹
@@ -117,4 +122,48 @@ README.md                      // 项目介绍
 tsconfig.json                  // ts 配置文件
 tsconfig.node.json             // vite 生成的 node 配置
 vite.config.ts                 // vite 配置文件
+```
+
+## 搭建问题
+#### 1、@ant-design/pro-layout
+
+@ant-design/pro-layout 内部 less 以 ～ 形式引入，vite 不支持该种方式的解析。
+
+> 解决方式
+```js
+// vite.config.ts 中添加以下配置
+resolve: {
+  alias: [
+    { find: /^~/, replacement: '' },
+  ]
+},
+css: {
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true, // antd 的引入也需要开启此项
+        additionalData: '@root-entry-name: default;' 
+      }
+    }
+  },
+```
+不使用 对象形式配置 alias 的原因是：别名只能以字符串形式匹配，而不能以正则形式匹配，不适合复杂场景
+
+#### 2、vite-plugin-pages
+问题1中将 ～ 替换为 '' 影响了 vite-plugin-pages 在 react 框架中的默认路由 '~react-pages' 的引入。导致自动生成的路由无法正确引入，路由系统瘫痪。
+
+解决方式
+```js
+// vite.config.ts 中添加以下配置
+
+plugins: [
+  Pages({
+    // 默认 ～react-pages 与 @ant-design/pro-layout 的 less 引入方式重合, 在解决 @ant-designpro-layout 的 less 引入方式时会影响
+    // 其他以 ～ 引入方式的包，故改为 @@ 开头
+    moduleId: '@@react-pages'
+  }),
+],
+
+// index.tsx 主页面引入方式
+import routes from '@@react-pages'
+
 ```

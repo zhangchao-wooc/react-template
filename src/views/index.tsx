@@ -8,7 +8,7 @@ interface Props {
   [x: string]: any
 }
 
-function Home(props: Props) {
+function Index(props: Props) {
   const navigate = useNavigate()
   const localStore = useLocalStore(() => homeStore)
 
@@ -27,7 +27,7 @@ function Home(props: Props) {
   const html = () => {
     return (
       <div className="App">
-        <h1>Welcome to React Router!</h1>
+        <h1>首页</h1>
         <Button onClick={jump}> 前往 HomePage </Button>
         <div>count: {localStore.count}</div>
         <div>computed: {localStore.computedCount}</div>
@@ -39,4 +39,4 @@ function Home(props: Props) {
   return <Observer>{() => html()}</Observer>
 }
 
-export default Home
+export default Index
