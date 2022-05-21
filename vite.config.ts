@@ -8,12 +8,12 @@ import * as path from 'path'
 export default defineConfig({
   resolve: {
     alias: [
-      { find: /^~/, replacement: '' }, // 解决 vite 支持 @ant-design/pro-layout 的 less 引入方式的问题
       { find: '@', replacement: path.resolve(__dirname, 'src') },
-      { find: '@api', replacement: path.resolve(__dirname, 'src/request') },
+      { find: '@util', replacement: path.resolve(__dirname, 'src/util') },
       { find: '@asset', replacement: path.resolve(__dirname, 'src/asset') },
       { find: '@models', replacement: path.resolve(__dirname, 'src/models') },
       { find: '@layout', replacement: path.resolve(__dirname, 'src/layout') },
+      { find: '@request', replacement: path.resolve(__dirname, 'src/request') },
       {
         find: '@/components',
         replacement: path.resolve(__dirname, 'src/components')
@@ -23,10 +23,7 @@ export default defineConfig({
   plugins: [
     react(),
     Pages({
-      dirs: 'src/views',
-      // 默认 ～react-pages 与 @ant-design/pro-layout 的 less 引入方式重合, 在解决 @ant-design/pro-layout 的 less 引入方式时会影响
-      // 其他以 ～ 引入方式的包，故改为 @@ 开头
-      moduleId: '@@react-pages'
+      dirs: 'src/views'
     }),
     vitePluginImp({
       libList: [
@@ -40,8 +37,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       less: {
-        javascriptEnabled: true,
-        additionalData: '@root-entry-name: default;' // 解决 vite 支持 @ant-design/pro-layout 的 less 引入方式的问题
+        javascriptEnabled: true
       }
     }
   },

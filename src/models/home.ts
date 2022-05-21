@@ -3,19 +3,21 @@ import { observable, action, computed, makeObservable } from 'mobx'
 const a = 10
 
 class Store {
-  @observable count = 1
+  @observable activeUsers = 112893
 
+  // 数据更改后触发页面响应
   constructor() {
     makeObservable(this)
   }
 
+  // 计算函数写法
   @computed get computedCount() {
-    return this.count + a
+    return this.activeUsers + a
   }
 
   @action.bound
-  add() {
-    this.count += 1
+  set(n: number) {
+    this.activeUsers = n
   }
 }
 

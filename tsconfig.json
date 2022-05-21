@@ -18,10 +18,11 @@
     "jsx": "react-jsx",
     "paths": {
       "@": ["./src"],
-      "@api": ["./src/request"],
+      "@util": ["./src/util"],
       "@asset": ["./src/asset"],
       "@models": ["./src/models"],
       "@layout": ["./src/layout"],
+      "@request": ["./src/request"],
       "@components": ["./src/components"],
     },
   },

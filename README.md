@@ -1,12 +1,21 @@
 # React-template
 省去搭建项目的问题，如果能帮助你，那就非常开心了！
 
+## 项目启动
+```js
+npm install     // 安装依赖
+npm run prepare // 生成 husky 的 shell 执行文件
+npm run dev     // 启动项目
+```
+#### Tips：
+- husky 生成的 shell 文件会被自带的 .ignore 自动忽略上传, 如果你需要也可以删除此文件，将 shell 上传至 git 仓库
+
 ## 模版内容
 采用当前最新的版本进行构建，主体为
 - react 18 + react-router
 - mobx + mobx-react 作为状态管理器
 - vite + vite-plugin-pages(自动生成路由)
-- antd + @ant-design/icons + @ant-design/pro-layout + less 的 UI 
+- antd + @ant-design/icons + less 的 UI 
 - axios 接口请求
 - husky + lint-stage + commitlint + eslint + prettier 校验代码、commit-msg 的提交规范及美化代码。保持团队代码风格与提交规范一致
 - .vscode + editorconfig 对编辑器的风格配置，保持开发人团队的配置一致
@@ -38,7 +47,6 @@ UI 框架
 ```js
 "antd": "^4.20.5",                                
 "@ant-design/icons": "^4.7.0",                    // antd 的图标库
-"@ant-design/pro-layout": "^6.38.2",              // antd 的布局库
 ```
 
 css 预编译器
@@ -103,10 +111,11 @@ src
   layout                       // 布局
   models                       // 状态管理
   request                      // 请求配置
+  util                         // 公共方法
   views                        // 页面文件夹
-    index.module.less          // 主页样式
-    index.tsx                  // 主页文件
-  index.css                    // 全局样式
+    home                       // 页面文件夹
+    list
+    index.tsx                  // 入口页面文件
   main.tsx                     // 入口文件
   vite-env.d.ts                // vite 生成的 env 配置文件的类型
 .commitlintrc                  // commit 提交信息规则的配置文件
@@ -124,8 +133,8 @@ tsconfig.node.json             // vite 生成的 node 配置
 vite.config.ts                 // vite 配置文件
 ```
 
-## 搭建问题
-#### 1、@ant-design/pro-layout
+## 可能出现的问题
+#### 1、安装 @ant-design/pro-layout
 
 @ant-design/pro-layout 内部 less 以 ～ 形式引入，vite 不支持该种方式的解析。
 

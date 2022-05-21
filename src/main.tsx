@@ -6,7 +6,7 @@ import store from '@models'
 import { BrowserRouter as Router, useRoutes } from 'react-router-dom'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //@ts-ignore
-import routes from '@@react-pages'
+import routes from '~react-pages'
 import LayoutPage from '@layout'
 import zhCN from 'antd/lib/locale/zh_CN'
 import moment from 'moment'
