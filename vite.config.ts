@@ -8,6 +8,7 @@ import * as path from 'path'
 export default defineConfig({
   resolve: {
     alias: [
+      { find: /^~/, replacement: '' }, // 解决 vite 不支持 less 文件以 ～ 开头引入的问题
       { find: '@', replacement: path.resolve(__dirname, 'src') },
       { find: '@util', replacement: path.resolve(__dirname, 'src/util') },
       { find: '@asset', replacement: path.resolve(__dirname, 'src/asset') },
@@ -23,7 +24,8 @@ export default defineConfig({
   plugins: [
     react(),
     Pages({
-      dirs: 'src/views'
+      dirs: 'src/views',
+      moduleId: '@@react-pages' // 因 less ～ 引入方式解决影响路由系统的默认文件 ～react-pages，故更改别名
     }),
     vitePluginImp({
       libList: [

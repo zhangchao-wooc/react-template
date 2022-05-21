@@ -53,7 +53,7 @@ function Home(props?: Props) {
                 onChange={set}
                 maxLength={20}
               />
-              <Button type="primary" onClick={set}>
+              <Button type="primary" onClick={() => localStore.set(0)}>
                 reset
               </Button>
             </Input.Group>

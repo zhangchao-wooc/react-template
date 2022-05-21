@@ -107,6 +107,11 @@ config                         // 配置文件
 
 src
   asset                        // 静态文件
+    img                        // 图片
+    style                      // 全局样式文件
+      theme.less               // antd 主题定制文件
+      global.less              // 全局样式文件
+      reset.less               // 重置默认样式文件
   components                   // 全局组建
   layout                       // 布局
   models                       // 状态管理
@@ -118,7 +123,7 @@ src
     index.tsx                  // 入口页面文件
   main.tsx                     // 入口文件
   vite-env.d.ts                // vite 生成的 env 配置文件的类型
-.commitlintrc                  // commit 提交信息规则的配置文件
+.commitlintrc.js               // commit 提交信息规则的配置文件
 .editorconfig                  // 编辑器的配置文件
 .eslintignore                  // eslint 忽略检查的配置文件
 .eslintrc                      // eslint 的配置文件
