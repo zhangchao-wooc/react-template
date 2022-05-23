@@ -1,7 +1,7 @@
 {
-  "name": "tast",
+  "name": "react-template",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -9,6 +9,7 @@
     "precommit": "lint-staged",
     "prepare": "husky install"
   },
+  "author": "wooc",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "antd": "^4.20.5",
