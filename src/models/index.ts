@@ -1,7 +1,9 @@
 import homeStore from './home'
+import globalStore from './global'
 
-export { homeStore }
+export { homeStore, globalStore }
 
 export default {
-  homeStore
+  homeStore,
+  globalStore
 }

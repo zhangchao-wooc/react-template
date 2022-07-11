@@ -1,19 +1,44 @@
 .ant-layout {
   min-height: 100vh;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 .logo {
-  float: left;
-  width: 120px;
-  height: 31px;
-  margin: 16px 24px 16px 0;
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.ant-row-rtl .logo {
-  float: right;
-  margin: 16px 0 16px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 25px;
+  margin-bottom: 0;
+  cursor: pointer;
 }
 
 .site-layout-background {
   background: #fff;
 }
+
+.userCenter {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  .user-avatar {
+    cursor: pointer;
+  }
+  .ant-avatar {
+    background-color: #fff;
+  }
+}
+
+.userInfoElement {
+  display: grid;
+  place-items: center;
+  gap: 10px;
+  .ant-btn {
+    width: 100%
+  }
+}
+
+

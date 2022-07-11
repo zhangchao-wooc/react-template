@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { HomeApi } from '@request'
 import { REG } from '@util'
 import { Statistic, Row, Col, Button, Input, message } from 'antd'
-import { Observer, useLocalStore } from 'mobx-react'
+import { Observer, useLocalObservable } from 'mobx-react'
 import { homeStore } from '@models'
 import './index.module.less'
 
@@ -11,7 +11,7 @@ interface Props {
 }
 
 function Home(props?: Props) {
-  const localStore = useLocalStore(() => homeStore)
+  const localStore = useLocalObservable(() => homeStore)
 
   useEffect(() => {
     HomeApi.demo().then((res: any) => {

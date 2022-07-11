@@ -232,6 +232,7 @@ class EditableTable extends React.Component<
           components={components}
           rowClassName={() => 'editable-row'}
           bordered
+          rowKey="key"
           dataSource={dataSource}
           columns={columns as ColumnTypes}
         />

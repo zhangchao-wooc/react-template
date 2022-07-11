@@ -181,3 +181,22 @@ plugins: [
 import routes from '@@react-pages'
 
 ```
+
+3、接口请求多次  
+模版中开启了 React 的严格模式，接口请求多次情况只发生在本地调试时，线上版本则无此情况。如关闭严格模式，可在 /react-template/src/main.tsx 中注释掉或删除代码。 如下所示
+```js
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  // <React.StrictMode>
+    <Provider {...store}>
+      <Router>
+        <ConfigProvider locale={zhCN}>
+          <LayoutPage>
+            <App />
+          </LayoutPage>
+        </ConfigProvider>
+      </Router>
+    </Provider>
+  // </React.StrictMode>
+)
+
+```

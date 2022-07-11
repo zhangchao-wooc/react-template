@@ -16,7 +16,7 @@ export default defineConfig({
       { find: '@layout', replacement: path.resolve(__dirname, 'src/layout') },
       { find: '@request', replacement: path.resolve(__dirname, 'src/request') },
       {
-        find: '@/components',
+        find: '@components',
         replacement: path.resolve(__dirname, 'src/components')
       }
     ]
