@@ -167,7 +167,6 @@ const LayoutPage = (props: any) => {
         <Menu
           mode="inline"
           defaultOpenKeys={openkeys}
-          // openKeys={openkeys}
           selectedKeys={selectedMenu}
           style={{ height: '100%', borderRight: 0 }}
           items={menuList}

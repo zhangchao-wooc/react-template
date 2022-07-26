@@ -1,9 +1,19 @@
 import { useEffect } from 'react'
 import { HomeApi } from '@request'
 import { REG } from '@util'
-import { Statistic, Row, Col, Button, Input, message } from 'antd'
+import {
+  Statistic,
+  Row,
+  Col,
+  Button,
+  Input,
+  message,
+  Form,
+  DatePicker
+} from 'antd'
 import { Observer, useLocalObservable } from 'mobx-react'
 import { homeStore } from '@models'
+import moment from 'moment'
 import './index.module.less'
 
 interface Props {
@@ -11,6 +21,7 @@ interface Props {
 }
 
 function Home(props?: Props) {
+  const [form] = Form.useForm()
   const localStore = useLocalObservable(() => homeStore)
 
   useEffect(() => {
@@ -28,9 +39,30 @@ function Home(props?: Props) {
       : message.warning('请输入数字！')
   }
 
+  const onFinish = () => {
+    const formData = form.getFieldsValue()
+    const data = {
+      queryStartTime:
+        formData.time && moment(formData.time[0]).format('YYYY-MM-DD HH:mm:ss'),
+      queryEndTime:
+        formData.time && moment(formData.time[1]).format('YYYY-MM-DD HH:mm:ss')
+    }
+    const endTime = moment(data.queryStartTime).valueOf() + 31536000000
+    const format = moment(endTime).format('YYYY-MM-DD HH:mm:ss')
+    console.log(data.queryStartTime, start, end, format)
+  }
+
   const html = () => {
     return (
       <>
+        <Form form={form} onFinish={onFinish}>
+          <Form.Item name="time" label="时间区间">
+            <DatePicker.RangePicker showTime />
+          </Form.Item>
+          <Button type="primary" htmlType="submit" onClick={onFinish}>
+            查询
+          </Button>
+        </Form>
         <Row gutter={16}>
           <Col span={12}>
             <Statistic title="Active Users" value={localStore.activeUsers} />

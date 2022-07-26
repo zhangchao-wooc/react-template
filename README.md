@@ -1,6 +1,16 @@
 # React-template
 react 框架模板
 
+## 配置策略
+所有配置均跟随项目文件而不依赖本地配置，以防每人本地配置不同而造成的项目冲突或事故。同时，所有配置文件跟随项目也减轻了协作开发人员的本地配置问题。  
+常见的跟随项目配置有以下几种
+- 编辑器配置
+- 代码校验配置
+- 代码风格配置
+- 镜像源配置
+- 包管理器配置
+- git 规范配置
+
 ## 项目启动
 ```js
 npm install     // 安装依赖
@@ -128,6 +138,7 @@ src
 .eslintignore                  // eslint 忽略检查的配置文件
 .eslintrc                      // eslint 的配置文件
 .gitignore                     // git 忽略提交的配置文件
+.npmrc                         // npm 镜像源
 .prettierrc                    // prettier 的配置文件
 index.html                     // 主文件模版
 package-lock.json              // 依赖版本记录
