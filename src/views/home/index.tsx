@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
-import { HomeApi } from '@request'
-import { REG } from '@util'
+import { HomeApi } from '@/request'
+import { REG } from '@/utils'
 import {
   Statistic,
   Row,
@@ -12,7 +12,7 @@ import {
   DatePicker
 } from 'antd'
 import { Observer, useLocalObservable } from 'mobx-react'
-import { homeStore } from '@models'
+import { homeStore } from '@/store'
 import moment from 'moment'
 import './index.module.less'
 
@@ -24,13 +24,9 @@ function Home(props?: Props) {
   const [form] = Form.useForm()
   const localStore = useLocalObservable(() => homeStore)
 
-  useEffect(() => {
-    HomeApi.demo().then((res: any) => {
-      console.log('api', res)
-    })
-  }, [])
+  // useEffect(() => {}, [])
 
-  const set = (e) => {
+  const set = (e: any) => {
     const v = e.target.value
     console.log(v, REG.numReg.test(v))
 
@@ -49,7 +45,7 @@ function Home(props?: Props) {
     }
     const endTime = moment(data.queryStartTime).valueOf() + 31536000000
     const format = moment(endTime).format('YYYY-MM-DD HH:mm:ss')
-    console.log(data.queryStartTime, start, end, format)
+    // console.log(data.queryStartTime, start, end, format)
   }
 
   const html = () => {

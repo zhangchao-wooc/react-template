@@ -1,5 +1,5 @@
 import { observable, action, makeObservable } from 'mobx'
-import { items2 } from '../layout/config'
+import { items2 } from '@/layout/config'
 
 class Store {
   @observable selectedMenu = ['']

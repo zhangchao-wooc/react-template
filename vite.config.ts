@@ -9,16 +9,7 @@ export default defineConfig({
   resolve: {
     alias: [
       { find: /^~/, replacement: '' }, // 解决 vite 不支持 less 文件以 ～ 开头引入的问题
-      { find: '@', replacement: path.resolve(__dirname, 'src') },
-      { find: '@util', replacement: path.resolve(__dirname, 'src/util') },
-      { find: '@asset', replacement: path.resolve(__dirname, 'src/asset') },
-      { find: '@models', replacement: path.resolve(__dirname, 'src/models') },
-      { find: '@layout', replacement: path.resolve(__dirname, 'src/layout') },
-      { find: '@request', replacement: path.resolve(__dirname, 'src/request') },
-      {
-        find: '@components',
-        replacement: path.resolve(__dirname, 'src/components')
-      }
+      { find: '@', replacement: path.resolve(__dirname, 'src') }
     ]
   },
   plugins: [
