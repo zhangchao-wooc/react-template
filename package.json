@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "stylelint": "npx stylelint 'src/**/*.less' --fix",
     "preview": "vite preview",
     "precommit": "lint-staged",
     "prepare": "husky install"
@@ -14,9 +15,10 @@
     "@ant-design/icons": "^4.7.0",
     "antd": "^4.20.5",
     "axios": "^0.27.2",
+    "dayjs": "^1.11.5",
     "mobx": "^6.5.0",
     "mobx-react": "^7.4.0",
-    "moment": "^2.29.4",
+    "normalize.css": "^8.0.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router": "^6.3.0",
@@ -39,7 +41,11 @@
     "husky": "^8.0.1",
     "less": "^4.1.2",
     "lint-staged": "^12.4.1",
+    "postcss-less": "^6.0.0",
     "prettier": "^2.6.2",
+    "stylelint": "^14.12.1",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^28.0.0",
     "typescript": "^4.6.3",
     "vite": "^2.9.9",
     "vite-plugin-imp": "^2.1.8",
@@ -48,6 +54,10 @@
   "lint-staged": {
     "src/**/*.ts": [
       "eslint src --fix",
+      "git add"
+    ],
+    "src/**/*.less": [
+      "npm run stylelint",
       "git add"
     ]
   }

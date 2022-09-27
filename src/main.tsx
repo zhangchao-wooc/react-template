@@ -9,12 +9,10 @@ import { BrowserRouter as Router, useRoutes } from 'react-router-dom'
 import routes from '@@react-pages'
 import LayoutPage from '@/layout'
 import zhCN from 'antd/lib/locale/zh_CN'
-import moment from 'moment'
+import 'normalize.css/normalize.css'
 import '@/assets/styles/global.less'
 import 'antd/dist/antd.less'
 import '@/assets/styles/theme.less'
-
-moment.locale('zh-cn')
 
 const App = () => {
   useEffect(() => {

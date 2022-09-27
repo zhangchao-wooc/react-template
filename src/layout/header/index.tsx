@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { observer, useLocalObservable } from 'mobx-react'
 import { globalStore } from '@/store'
 import { CommonApi } from '@/request'
+import styles from './index.module.less'
 
 const { Header } = Layout
 const HeaderPage = () => {
@@ -23,8 +24,8 @@ const HeaderPage = () => {
   }
 
   const userInfoElement = (
-    <div className="userInfoElement">
-      <div className="userName">{userInfo && userInfo.name}</div>
+    <div className={styles['user-info-element']}>
+      <div className="user-name">{userInfo && userInfo.name}</div>
       <Button type="primary" onClick={loginout}>
         登出
       </Button>
@@ -46,7 +47,7 @@ const HeaderPage = () => {
       >
         Template
       </h1>
-      <div className="userCenter">
+      <div className={styles['user-center']}>
         <Popover
           placement="bottom"
           title={'个人信息'}
@@ -55,7 +56,7 @@ const HeaderPage = () => {
         >
           <Tooltip placement="bottom" title={'个人中心'}>
             <Avatar
-              className="user-avatar"
+              className={styles['user-avatar']}
               src={userInfo && userInfo.avatar && userInfo.avatar.avatar_72}
             />
           </Tooltip>

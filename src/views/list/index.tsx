@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect, useRef } from 'react'
 import type { InputRef } from 'antd'
 import { Table, Input, Button, Popconfirm, Form } from 'antd'
 import type { FormInstance } from 'antd/lib/form'
+import styles from './index.module.less'
 
 const EditableContext = React.createContext<FormInstance<any> | null>(null)
 
@@ -220,7 +221,7 @@ class EditableTable extends React.Component<
       }
     })
     return (
-      <div>
+      <div className={styles.list}>
         <Button
           onClick={this.handleAdd}
           type="primary"

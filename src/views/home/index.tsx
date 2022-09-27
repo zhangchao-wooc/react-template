@@ -1,20 +1,10 @@
-import { useEffect } from 'react'
-import { HomeApi } from '@/request'
 import { REG } from '@/utils'
-import {
-  Statistic,
-  Row,
-  Col,
-  Button,
-  Input,
-  message,
-  Form,
-  DatePicker
-} from 'antd'
+import { Statistic, Row, Col, Button, Input, message, Form } from 'antd'
+import { DatePicker } from '@/components'
 import { Observer, useLocalObservable } from 'mobx-react'
 import { homeStore } from '@/store'
 import moment from 'moment'
-import './index.module.less'
+import styles from './index.module.less'
 
 interface Props {
   [x: string]: any
@@ -50,7 +40,7 @@ function Home(props?: Props) {
 
   const html = () => {
     return (
-      <>
+      <div className={styles.home}>
         <Form form={form} onFinish={onFinish}>
           <Form.Item name="time" label="时间区间">
             <DatePicker.RangePicker showTime />
@@ -87,7 +77,7 @@ function Home(props?: Props) {
             </Input.Group>
           </Col>
         </Row>
-      </>
+      </div>
     )
   }
 
