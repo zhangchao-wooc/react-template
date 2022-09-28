@@ -27,7 +27,7 @@ npm run dev     // 启动项目
 - vite + vite-plugin-pages(自动生成路由)
 - antd + @ant-design/icons + less 的 UI 
 - axios 接口请求
-- husky + lint-stage + commitlint + eslint + prettier 校验代码、commit-msg 的提交规范及美化代码。保持团队代码风格与提交规范一致
+- husky + lint-stage + commitlint + eslint + stylelint + prettier 校验代码、commit-msg 的提交规范及美化代码。保持团队代码风格与提交规范一致
 - .vscode + editorconfig 对编辑器的风格配置，保持开发人团队的配置一致
 
 ## 模版依赖
@@ -50,17 +50,18 @@ web 框架
 
 接口请求
 ```js
-"axios": "^0.27.2"
+"axios": "^0.27.2"                                // 基于 XHRrequest 封装的请求库，后续考虑使用 fetch 替代
 ```
 
 UI 框架
 ```js
-"antd": "^4.20.5",                                
+"antd": "^4.20.5",                                // Ant Design UI 库
 "@ant-design/icons": "^4.7.0",                    // antd 的图标库
 ```
 
-css 预编译器
-```js
+css
+```js 
+ "normalize.css": "^8.0.1",                       // 重置 css 默认样式
 "less": "^4.1.2"                                  // 选择 less 是因为 antd 是以 less 作为底层 css 预编译器，可以更好的接入和自定义主题
 ```
 
@@ -82,6 +83,10 @@ lint 工具
 "eslint-plugin-react-hooks": "^4.5.0"              // 针对 React-hooks 的 eslint 规则
 "@commitlint/cli": "^17.0.0",                      // 校验 commit-msg 
 "@commitlint/config-conventional": "^17.0.0",      // commit-msg 的规则库，如不喜欢可在 .commitlintrc 中配置自定义规则
+"stylelint": "^14.12.1",                           // 校验 css 的规则库
+"postcss-less": "^6.0.0",                          // 配合校验 less 文件 同类型的还有 postcss-scss 等
+"stylelint-config-prettier": "^9.0.3",             // 配合 prettier 使用
+"stylelint-config-standard": "^28.0.0",            // stylelint 的标准规则库，也可自定义规则覆盖标准库规则
 ```
 
 类型文件
@@ -98,7 +103,11 @@ lint 工具
 "vite": "^2.9.9",                                  // 利用 ESM 开发环境构建非常快，生产构建为 gulp
 "@vitejs/plugin-react": "^1.3.0",                  // vite 官方插件，用于支持 React 框架构建
 "vite-plugin-pages": "^0.23.0"                     // vite 官方插件，以文件系统的嵌套生成 React 或 Vue 的约定式的路由系统
-"vite-plugin-imp": "^2.1.8",                       // 按需引入资源，这里使用在 antd 样式文件的按需引入上
+```
+
+开发工具库
+```js
+"dayjs": "^1.11.5",
 ```
 
 ## 目录结构
@@ -116,17 +125,16 @@ lint 工具
 config                         // 配置文件
 
 src
-  asset                        // 静态文件
+  assets                        // 静态文件
     img                        // 图片
-    style                      // 全局样式文件
+    styles                     // 全局样式文件
       theme.less               // antd 主题定制文件
       global.less              // 全局样式文件
-      reset.less               // 重置默认样式文件
   components                   // 全局组建
   layout                       // 布局
   models                       // 状态管理
   request                      // 请求配置
-  util                         // 公共方法
+  utils                         // 公共方法
   views                        // 页面文件夹
     home                       // 页面文件夹
     list
@@ -140,6 +148,7 @@ src
 .gitignore                     // git 忽略提交的配置文件
 .npmrc                         // npm 镜像源
 .prettierrc                    // prettier 的配置文件
+.stylelintrc                   // stylelint 配置文件
 index.html                     // 主文件模版
 package-lock.json              // 依赖版本记录
 package.json                   // 项目依赖配置文件
