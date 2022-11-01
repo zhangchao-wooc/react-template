@@ -125,16 +125,16 @@ lint 工具
 config                         // 配置文件
 
 src
-  assets                        // 静态文件
+  assets                       // 静态文件
     img                        // 图片
     styles                     // 全局样式文件
       theme.less               // antd 主题定制文件
       global.less              // 全局样式文件
   components                   // 全局组建
   layout                       // 布局
-  models                       // 状态管理
+  store                        // 状态管理
   request                      // 请求配置
-  utils                         // 公共方法
+  utils                        // 公共方法
   views                        // 页面文件夹
     home                       // 页面文件夹
     list

@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import Pages from 'vite-plugin-pages'
-import vitePluginImp from 'vite-plugin-imp'
 import * as path from 'path'
 
 // https://vitejs.dev/config/
@@ -17,14 +16,6 @@ export default defineConfig({
     Pages({
       dirs: 'src/views',
       moduleId: '@@react-pages' // 因 less ～ 引入方式解决影响路由系统的默认文件 ～react-pages，故更改别名
-    }),
-    vitePluginImp({
-      libList: [
-        {
-          libName: 'antd',
-          style: (name) => `antd/es/${name}/style`
-        }
-      ]
     })
   ],
   css: {
