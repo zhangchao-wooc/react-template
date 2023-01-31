@@ -37,5 +37,14 @@ export default defineConfig({
       }
     },
     cors: true
-  }
+  },
+  build: {
+    sourcemap: false,
+    rollupOptions: {
+      // production build rollup options
+      plugins: []
+    }
+  },
+  envDir: path.resolve(__dirname, 'env'),
+  envPrefix: 'WOOC_'
 })

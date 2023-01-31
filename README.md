@@ -27,7 +27,7 @@ npm run dev     // 启动项目
 - vite + vite-plugin-pages(自动生成路由)
 - antd + @ant-design/icons + less 的 UI 
 - axios 接口请求
-- husky + lint-stage + commitlint + eslint + stylelint + prettier 校验代码、commit-msg 的提交规范及美化代码。保持团队代码风格与提交规范一致
+- husky + lint-stage + commitlint + eslint + stylelint + prettier 校验代码、commit-msg 的提交规范及美化代码、stylelint 规范样式代码。保持团队代码风格与提交规范一致
 - .vscode + editorconfig 对编辑器的风格配置，保持开发人团队的配置一致
 
 ## 模版依赖
@@ -122,7 +122,10 @@ lint 工具
 .vscode                        // vscode 编辑器的配置文件，会覆盖本地配置
   settings.json               
 
-config                         // 配置文件
+env                            // 环境变量文件夹
+  .env                         // 公共变量。所有模式都会加载
+  .env.development             // npm run dev. 开发环境变量文件，会覆盖 .env 中同名变量
+  .env.production              // npm run build. 生产环境变量文件，会覆盖 .env 中同名变量
 
 src
   assets                       // 静态文件

@@ -34,7 +34,7 @@ const HeaderPage = () => {
 
   return (
     <Header
-      className="header"
+      className={styles.header}
       style={{ position: 'fixed', zIndex: 1, width: '100%' }}
     >
       <h1
@@ -48,6 +48,10 @@ const HeaderPage = () => {
         Template
       </h1>
       <div className={styles['user-center']}>
+        <div>
+          当前环境：
+          {import.meta.env.MODE}&nbsp;&nbsp;
+        </div>
         <Popover
           placement="bottom"
           title={'个人信息'}
