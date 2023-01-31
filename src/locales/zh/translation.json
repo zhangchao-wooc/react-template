@@ -1,0 +1,33 @@
+{
+  "layout": {
+    "home_page": "首页",
+    "first_menu": "第一个菜单",
+    "second_menu": "第二个菜单",
+    "collapse_the_sidebar": "收起侧边栏",
+    "user_info": "个人信息",
+    "user_center": "个人中心",
+    "chinese": "中文",
+    "english": "英文",
+    "log_out": "登出"
+  },
+  "common": {
+    "reset": "重置",
+    "submit": "提交",
+    "please_select": "请选择",
+    "loading": "加载中..."
+  },
+  "home": {
+    "active_users": "活动用户",
+    "account_balance": "账户余额 (CNY)",
+    "recharge": "充值",
+    "select_demo": "选择示例",
+    "p_input_n": "请输入数字！"
+  },
+  "list": {
+    "add_row": "新增一行",
+    "table_name": "名字",
+    "table_age": "年龄",
+    "table_addr": "地址",
+    "table_operation": "操作"
+  }
+}

@@ -1,8 +1,9 @@
 import React, { useContext, useState, useEffect, useRef } from 'react'
 import type { InputRef } from 'antd'
-import { Table, Input, Button, Popconfirm, Form } from 'antd'
+import { Table, Input, Button, Form } from 'antd'
 import type { FormInstance } from 'antd/lib/form'
-import styles from './index.module.less'
+import { withTranslation, Translation } from 'react-i18next'
+import type { WithTranslation } from 'react-i18next'
 
 const EditableContext = React.createContext<FormInstance<any> | null>(null)
 
@@ -103,6 +104,9 @@ const EditableCell: React.FC<EditableCellProps> = ({
 }
 
 type EditableTableProps = Parameters<typeof Table>[0]
+interface Props extends EditableTableProps {
+  t: WithTranslation['t']
+}
 
 interface DataType {
   key: React.Key
@@ -118,32 +122,29 @@ interface EditableTableState {
 
 type ColumnTypes = Exclude<EditableTableProps['columns'], undefined>
 
-class EditableTable extends React.Component<
-  EditableTableProps,
-  EditableTableState
-> {
+class EditableTable extends React.Component<Props, EditableTableState> {
   columns: (ColumnTypes[number] & { editable?: boolean; dataIndex: string })[]
 
-  constructor(props: EditableTableProps) {
+  constructor(props: Props) {
     super(props)
 
     this.columns = [
       {
-        title: 'name',
+        title: <Translation>{(t) => t('list.table_name')}</Translation>,
         dataIndex: 'name',
         width: '30%',
         editable: true
       },
       {
-        title: 'age',
+        title: <Translation>{(t) => t('list.table_age')}</Translation>,
         dataIndex: 'age'
       },
       {
-        title: 'address',
+        title: <Translation>{(t) => t('list.table_addr')}</Translation>,
         dataIndex: 'address'
       },
       {
-        title: 'operation',
+        title: <Translation>{(t) => t('list.table_operation')}</Translation>,
         dataIndex: 'operation'
       }
     ]
@@ -221,19 +222,19 @@ class EditableTable extends React.Component<
       }
     })
     return (
-      <div className={styles.list}>
+      <div>
         <Button
           onClick={this.handleAdd}
           type="primary"
           style={{ marginBottom: 16 }}
         >
-          Add a row
+          {this.props.t('list.add_row')}
         </Button>
         <Table
+          rowKey="key"
           components={components}
           rowClassName={() => 'editable-row'}
           bordered
-          rowKey="key"
           dataSource={dataSource}
           columns={columns as ColumnTypes}
         />
@@ -242,4 +243,4 @@ class EditableTable extends React.Component<
   }
 }
 
-export default EditableTable
+export default withTranslation()(EditableTable)

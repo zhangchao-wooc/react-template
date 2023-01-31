@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Layout, Breadcrumb, message } from 'antd'
 import { observer, useLocalObservable } from 'mobx-react'
+import { useTranslation } from 'react-i18next'
 import { globalStore } from '@/store'
 import { CommonApi } from '@/request'
 import HeaderPage from './header'
@@ -10,6 +11,7 @@ import './index.less'
 const { Content } = Layout
 
 const LayoutPage = (props: any) => {
+  const { t } = useTranslation()
   const { setStore } = useLocalObservable(() => globalStore)
   const [layoutStyle, setLayoutStyle] = useState({
     padding: '15px',
@@ -57,7 +59,7 @@ const LayoutPage = (props: any) => {
           }}
         >
           <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
+            <Breadcrumb.Item>{t('layout.home_page')}</Breadcrumb.Item>
           </Breadcrumb>
           {props.children}
         </Content>

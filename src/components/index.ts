@@ -4,3 +4,5 @@ export { default as Calendar } from './Calendar'
 export { default as TimePicker } from './TimePicker'
 
 // global custom components
+export { default as SelectPage } from './select'
+export { default as AutoCompletePage } from './autoComplete'

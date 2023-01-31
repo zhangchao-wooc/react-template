@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
+    "staging": "tsc && vite build --mode staging",
     "build": "tsc && vite build",
     "stylelint": "npx stylelint 'src/**/*.less' --fix",
     "preview": "vite preview",
@@ -17,11 +18,15 @@
     "axios": "^0.27.2",
     "crypto-js": "^4.1.1",
     "dayjs": "^1.11.5",
+    "i18next": "^22.4.9",
+    "i18next-browser-languagedetector": "^7.0.1",
+    "i18next-http-backend": "^2.1.1",
     "mobx": "^6.5.0",
     "mobx-react": "^7.4.0",
     "normalize.css": "^8.0.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-i18next": "^12.1.4",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0"
   },

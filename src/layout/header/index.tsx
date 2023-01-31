@@ -1,13 +1,15 @@
-import { useEffect } from 'react'
-import { Layout, Popover, Tooltip, Avatar, Button, message } from 'antd'
+import { Layout, Popover, Tooltip, Avatar, Button, Select, message } from 'antd'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation, Translation } from 'react-i18next'
 import { observer, useLocalObservable } from 'mobx-react'
 import { globalStore } from '@/store'
 import { CommonApi } from '@/request'
 import styles from './index.module.less'
 
 const { Header } = Layout
+
 const HeaderPage = () => {
+  const { t, i18n } = useTranslation()
   const navigate = useNavigate()
   const { setStore, userInfo } = useLocalObservable(() => globalStore)
 
@@ -27,7 +29,7 @@ const HeaderPage = () => {
     <div className={styles['user-info-element']}>
       <div className="user-name">{userInfo && userInfo.name}</div>
       <Button type="primary" onClick={loginout}>
-        登出
+        {t('layout.log_out')}
       </Button>
     </div>
   )
@@ -54,17 +56,32 @@ const HeaderPage = () => {
         </div>
         <Popover
           placement="bottom"
-          title={'个人信息'}
+          title={t('layout.user_info')}
           content={userInfoElement}
           trigger="click"
         >
-          <Tooltip placement="bottom" title={'个人中心'}>
+          <Tooltip placement="bottom" title={t('layout.user_center')}>
             <Avatar
               className={styles['user-avatar']}
               src={userInfo && userInfo.avatar && userInfo.avatar.avatar_72}
             />
           </Tooltip>
         </Popover>
+        <Select
+          style={{ marginLeft: '20px' }}
+          defaultValue={i18n.language}
+          onChange={(value: string) => i18n.changeLanguage(value)}
+          options={[
+            {
+              value: 'zh',
+              label: <Translation>{(t) => t('layout.chinese')}</Translation>
+            },
+            {
+              value: 'en',
+              label: <Translation>{(t) => t('layout.english')}</Translation>
+            }
+          ]}
+        />
       </div>
     </Header>
   )

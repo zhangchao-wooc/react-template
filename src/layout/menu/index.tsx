@@ -1,7 +1,13 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Layout, Menu } from 'antd'
-import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons'
+import { useTranslation } from 'react-i18next'
+import {
+  DoubleLeftOutlined,
+  DoubleRightOutlined,
+  UserOutlined,
+  NotificationOutlined
+} from '@ant-design/icons'
 import { observer, useLocalObservable } from 'mobx-react'
 import { globalStore } from '@/store'
 
@@ -18,11 +24,26 @@ interface item {
 }
 
 const MenuPage = (props: Props) => {
+  const { t, i18n } = useTranslation()
   const navigate = useNavigate()
-  const { menuList, selectedMenu, setStore, openkeys } = useLocalObservable(
+  const { selectedMenu, setStore, openkeys } = useLocalObservable(
     () => globalStore
   )
   const [collapsed, setCollapsed] = useState(false)
+  const menuList = [
+    {
+      key: '1',
+      icon: React.createElement(UserOutlined),
+      label: t('layout.first_menu'),
+      route: '/home'
+    },
+    {
+      key: '2',
+      icon: React.createElement(NotificationOutlined),
+      label: t('layout.second_menu'),
+      route: '/list'
+    }
+  ]
 
   const onSelectMenu = ({ item, selectedKeys, keyPath, domEvent }: item) => {
     const { route } = item.props
@@ -57,7 +78,7 @@ const MenuPage = (props: Props) => {
           {!collapsed ? (
             <>
               <DoubleLeftOutlined />
-              <span>&nbsp;&nbsp;收起侧边栏</span>
+              <span>&nbsp;&nbsp;{t('layout.collapse_the_sidebar')}</span>
             </>
           ) : (
             <DoubleRightOutlined />
