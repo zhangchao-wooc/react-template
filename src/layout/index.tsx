@@ -31,7 +31,7 @@ const LayoutPage = (props: any) => {
     if (ui !== null) {
       setStore('userInfo', JSON.parse(ui) || {})
     } else {
-      userInfoApi()
+      // userInfoApi()
     }
   }, [])
 

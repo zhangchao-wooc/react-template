@@ -21,7 +21,6 @@ const HeaderPage = () => {
       } else {
         message.warning('登出失败！')
       }
-      console.log('loginout', res)
     })
   }
 
@@ -40,7 +39,7 @@ const HeaderPage = () => {
       style={{ position: 'fixed', zIndex: 1, width: '100%' }}
     >
       <h1
-        className="logo"
+        className={styles['logo']}
         onClick={() => {
           navigate('/')
           setStore('selectedMenu', [])

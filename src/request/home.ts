@@ -9,8 +9,8 @@ const demo = () => {
 const querySelect = () => {
   return new Promise((resolve, reject) => {
     const res = {
-      success: true,
-      data: [
+      msgCode: 'SUCCESS',
+      responseData: [
         {
           key: '1',
           value: '第一个'

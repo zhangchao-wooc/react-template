@@ -17,7 +17,7 @@ import LayoutPage from '@/layout'
 import zhCN from 'antd/lib/locale/zh_CN'
 import 'normalize.css/normalize.css'
 import '@/assets/styles/global.less'
-import 'antd/dist/antd.less'
+// import 'antd/dist/antd.less'
 import '@/assets/styles/theme.less'
 
 const App = () => {

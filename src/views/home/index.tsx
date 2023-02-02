@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { Statistic, Row, Col, Button, Input, message, Form } from 'antd'
 import { observer, useLocalObservable } from 'mobx-react'
 import { useTranslation } from 'react-i18next'
@@ -7,23 +6,12 @@ import { REG } from '@/utils'
 import { homeStore } from '@/store'
 import { SelectPage } from '@/components'
 
-interface Props {
-  [x: string]: any
-}
-
-function Home(props?: Props) {
+function Home() {
   const localStore = useLocalObservable(() => homeStore)
   const { t } = useTranslation()
 
-  useEffect(() => {
-    HomeApi.demo().then((res: any) => {
-      console.log('api', res)
-    })
-  }, [])
-
   const set = (e: { target: { value: any } }) => {
     const v = e.target.value
-    console.log(v, REG.numReg.test(v))
 
     REG.numReg.test(v)
       ? localStore.set(Number(v))
@@ -64,13 +52,24 @@ function Home(props?: Props) {
         </Col>
       </Row>
       <Row gutter={16}>
-        <Col style={{ display: 'flex', marginTop: 30 }}>
-          <Form>
+        <Col style={{ display: 'flex', marginTop: '30px' }}>
+          <Form style={{ marginRight: '20px' }}>
             <SelectPage
-              name="demo"
-              label={t('home.select_demo')}
-              placeholder={t('common.please_select') || ''}
-              fn={HomeApi.querySelect()}
+              formProps={{
+                name: 'demo',
+                label: t('home.select_demo'),
+                rules: [{ required: true, message: '请选择' }]
+              }}
+              selectProps={{
+                style: { width: '175px' },
+                placeholder: t('common.please_select') || ''
+              }}
+              customProps={{
+                isForm: true,
+                label: 'value',
+                value: 'key',
+                fn: (data: string) => HomeApi.querySelect()
+              }}
             />
           </Form>
           <Button type="primary" htmlType="submit">
