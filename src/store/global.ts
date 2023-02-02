@@ -8,7 +8,8 @@ class Store {
   @observable userInfo: any = {
     name: '默认',
     avatar: {
-      avatar_72: 'https://joeschmoe.io/api/v1/random'
+      avatar_72:
+        'https://p3-passport.byteimg.com/img/user-avatar/1033133c562359e7531b2526f0649741~100x100.awebp'
     }
   }
 

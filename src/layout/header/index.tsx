@@ -47,12 +47,12 @@ const HeaderPage = () => {
           setStore('openkeys', [])
         }}
       >
-        Template
+        {t('layout.platform')}
       </h1>
       <div className={styles['user-center']}>
-        <div>
-          当前环境：
-          {import.meta.env.MODE}&nbsp;&nbsp;
+        <div style={{ marginRight: '20px' }}>
+          {t('layout.current_env')}&nbsp;
+          {import.meta.env.MODE}
         </div>
         <Popover
           placement="bottom"

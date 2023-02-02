@@ -1,5 +1,6 @@
 {
   "layout": {
+    "platform": "React Template",
     "home_page": "HomePage",
     "first_menu": "First Menu",
     "second_menu": "Second Menu",
@@ -8,7 +9,8 @@
     "user_center": "User center",
     "chinese": "Chinese",
     "english": "English",
-    "log_out": "Log out"
+    "log_out": "Log out",
+    "current_env": "Current env："
   },
   
   "common": {
