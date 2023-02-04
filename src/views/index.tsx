@@ -1,4 +1,4 @@
-import { Calendar, Badge } from 'antd'
+import { Calendar } from 'antd'
 
 const EntryPage = () => <Calendar />
 export default EntryPage

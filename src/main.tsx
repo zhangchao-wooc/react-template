@@ -17,15 +17,12 @@ import LayoutPage from '@/layout'
 import zhCN from 'antd/lib/locale/zh_CN'
 import 'normalize.css/normalize.css'
 import '@/assets/styles/global.less'
-// import 'antd/dist/antd.less'
-import '@/assets/styles/theme.less'
 
 const App = () => {
   const { t } = useTranslation()
   const navigator = useNavigate()
 
   useEffect(() => {
-    console.log('routes', routes)
     const router = localStorage.getItem('selectedMenuRoute')
     navigator(router || '/home')
   }, [])
@@ -55,7 +52,14 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Provider {...store}>
       <Router>
-        <ConfigProvider locale={zhCN}>
+        <ConfigProvider
+          locale={zhCN}
+          theme={{
+            token: {
+              colorPrimary: 'ff6600'
+            }
+          }}
+        >
           <LayoutPage>
             <App />
           </LayoutPage>

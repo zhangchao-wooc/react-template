@@ -55,7 +55,7 @@ web 框架
 
 UI 框架
 ```js
-"antd": "^4.20.5",                                // Ant Design UI 库
+"antd": "^5.1.7",                                // Ant Design UI 库
 "@ant-design/icons": "^4.7.0",                    // antd 的图标库
 ```
 
@@ -100,14 +100,23 @@ lint 工具
 
 构建工具
 ```js
-"vite": "^2.9.9",                                  // 利用 ESM 开发环境构建非常快，生产构建为 gulp
+"vite": "^4.1.0",                                  // 利用 ESM 开发环境构建非常快，生产构建为 gulp
 "@vitejs/plugin-react": "^1.3.0",                  // vite 官方插件，用于支持 React 框架构建
 "vite-plugin-pages": "^0.23.0"                     // vite 官方插件，以文件系统的嵌套生成 React 或 Vue 的约定式的路由系统
 ```
 
 开发工具库
 ```js
-"dayjs": "^1.11.5",
+"dayjs": "^1.11.5",                                // moment 的替代方案，antd 5 的时间处理方案
+"lodash": "^4.17.21",                              // 方法库
+```
+
+多语言方案
+```js
+"react-i18next": "^12.1.4"                         // i18next 的 react 版
+"i18next": "^22.4.9",                              // i18next core 包
+"i18next-browser-languagedetector": "^7.0.1",      // 浏览器多语言
+"i18next-http-backend": "^2.1.1",                  // 远程多语言方案
 ```
 
 ## 目录结构
@@ -126,20 +135,21 @@ env                            // 环境变量文件夹
   .env                         // 公共变量。所有模式都会加载
   .env.development             // npm run dev. 开发环境变量文件，会覆盖 .env 中同名变量
   .env.production              // npm run build. 生产环境变量文件，会覆盖 .env 中同名变量
+  .env.staging                 // npm run staging 预发环境变量文件，会覆盖 .env 中同名变量
 
 src
   assets                       // 静态文件
     img                        // 图片
     styles                     // 全局样式文件
-      theme.less               // antd 主题定制文件
       global.less              // 全局样式文件
   components                   // 全局组建
   layout                       // 布局
-  store                        // 状态管理
+  locales                      // 多语言文件
   request                      // 请求配置
+  store                        // 状态管理
   utils                        // 公共方法
   views                        // 页面文件夹
-    home                       // 页面文件夹
+    home                       
     list
     index.tsx                  // 入口页面文件
   main.tsx                     // 入口文件

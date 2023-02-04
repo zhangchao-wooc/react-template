@@ -16,7 +16,6 @@
     "@ant-design/icons": "^4.7.0",
     "antd": "^5.1.7",
     "axios": "^0.27.2",
-    "crypto-js": "^4.1.1",
     "dayjs": "^1.11.5",
     "i18next": "^22.4.9",
     "i18next-browser-languagedetector": "^7.0.1",
@@ -60,12 +59,10 @@
   },
   "lint-staged": {
     "src/**/*.ts": [
-      "eslint src --fix",
-      "git add"
+      "eslint src --fix"
     ],
     "src/**/*.less": [
-      "npm run stylelint",
-      "git add"
+      "npm run stylelint"
     ]
   }
 }
