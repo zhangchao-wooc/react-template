@@ -16,7 +16,11 @@ i18n
       backend: {
         loadPath: '/src/locales/{{lng}}/{{ns}}.json',
         addPath: '/src/locales/add/{{lng}}/{{ns}}',
-        allowMultiLoading: true
+        allowMultiLoading: true,
+        customHeaders: {
+          'Cache-Control': 'no-cache',
+          Expires: '0'
+        }
         // parse: (
         //   data: string,
         //   languages?: string | string[],
