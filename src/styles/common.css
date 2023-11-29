@@ -1,0 +1,17 @@
+/* common class */
+
+/* text overflow ellipsis show */
+.one-text-overflow {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.two-text-overflow {
+  display: --webkit-box; /* 将对象作为弹性伸缩盒模型显示 */
+  -webkit-line-clamp: 2; /* text show line */
+  -webkit-box-orient: vertical; /* 设置或检查伸缩盒对象的子元素的排列方式 */
+  text-overflow: ellipsis;
+  word-break: break-all;
+  overflow: hidden;
+}
