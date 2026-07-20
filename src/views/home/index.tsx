@@ -13,9 +13,11 @@ function Home() {
   const set = (e: { target: { value: any } }) => {
     const v = e.target.value
 
-    REG.numReg.test(v)
-      ? localStore.set(Number(v))
-      : message.warning(t('home.p_input_n'))
+    if (REG.numReg.test(v)) {
+      localStore.set(Number(v))
+    } else {
+      message.warning(t('home.p_input_n'))
+    }
   }
 
   return (
@@ -68,7 +70,7 @@ function Home() {
                 isForm: true,
                 label: 'value',
                 value: 'key',
-                fn: (data: string) => HomeApi.querySelect()
+                fn: () => HomeApi.querySelect()
               }}
             />
           </Form>

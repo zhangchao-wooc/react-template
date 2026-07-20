@@ -1,6 +1,5 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "nuxt.isNuxtApp": false
- }
+    "source.fixAll.eslint": "explicit"
+  }
+}

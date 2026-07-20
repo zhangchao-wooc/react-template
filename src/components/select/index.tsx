@@ -2,11 +2,13 @@ import { Select, Spin, message, Form } from 'antd'
 import type { SelectProps } from 'antd/es/select'
 import type { FormItemProps } from 'antd/es/form'
 
-import debounce from 'lodash/debounce'
+import { debounce } from 'lodash-es'
 import React, { useMemo, useRef, useState, useEffect } from 'react'
 
-export interface DebounceSelectProps<ValueType = any>
-  extends Omit<SelectProps<ValueType | ValueType[]>, 'options' | 'children'> {
+export interface DebounceSelectProps<ValueType = any> extends Omit<
+  SelectProps<ValueType | ValueType[]>,
+  'options' | 'children'
+> {
   fetchOptions: (search: string) => Promise<ValueType[]>
   debounceTimeout?: number
   props: Props

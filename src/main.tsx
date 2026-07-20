@@ -3,20 +3,18 @@ import ReactDOM from 'react-dom/client'
 import { Provider } from 'mobx-react'
 import { ConfigProvider, Spin } from 'antd'
 import { useTranslation } from 'react-i18next'
-import './locales/index'
+import { i18nReady } from '@/i18n'
 import store from '@/store'
 import {
   BrowserRouter as Router,
   useRoutes,
   useNavigate
 } from 'react-router-dom'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-//@ts-ignore
-import routes from '@@react-pages'
+import routes from '@/router/index'
 import LayoutPage from '@/layout'
 import zhCN from 'antd/lib/locale/zh_CN'
 import 'normalize.css/normalize.css'
-import '@/assets/styles/global.less'
+import '@/styles/global.css'
 
 const App = () => {
   const { t } = useTranslation()
@@ -39,7 +37,7 @@ const App = () => {
             height: '100%'
           }}
         >
-          <Spin tip={t('common.loading')} size="large"></Spin>
+          <Spin description={t('common.loading')} size="large"></Spin>
         </div>
       }
     >
@@ -48,23 +46,25 @@ const App = () => {
   )
 }
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <Provider {...store}>
-      <Router>
-        <ConfigProvider
-          locale={zhCN}
-          theme={{
-            token: {
-              colorPrimary: 'ff6600'
-            }
-          }}
-        >
-          <LayoutPage>
-            <App />
-          </LayoutPage>
-        </ConfigProvider>
-      </Router>
-    </Provider>
-  </React.StrictMode>
-)
+void i18nReady.then(() => {
+  ReactDOM.createRoot(document.getElementById('root')!).render(
+    <React.StrictMode>
+      <Provider {...store}>
+        <Router>
+          <ConfigProvider
+            locale={zhCN}
+            theme={{
+              token: {
+                colorPrimary: 'ff6600'
+              }
+            }}
+          >
+            <LayoutPage>
+              <App />
+            </LayoutPage>
+          </ConfigProvider>
+        </Router>
+      </Provider>
+    </React.StrictMode>
+  )
+})

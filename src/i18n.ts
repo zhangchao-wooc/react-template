@@ -4,18 +4,18 @@ import Backend from 'i18next-http-backend'
 import LanguageDetector from 'i18next-browser-languagedetector'
 
 // const backend = new Backend({})
-i18n
+export const i18nReady = i18n
   .use(Backend)
   .use(LanguageDetector)
   .use(initReactI18next) // passes i18n down to react-i18next
   .init(
     {
-      debug: true,
+      debug: import.meta.env.WOOC_ENV === 'development',
       load: 'languageOnly',
-      fallbackLng: 'en',
+      fallbackLng: 'en-US',
       backend: {
-        loadPath: '/src/locales/{{lng}}/{{ns}}.json',
-        addPath: '/src/locales/add/{{lng}}/{{ns}}',
+        loadPath: import.meta.env.WOOC_I18N_LOADPATH,
+        addPath: import.meta.env.WOOC_I18N_ADDPATH,
         allowMultiLoading: true,
         customHeaders: {
           'Cache-Control': 'no-cache',
@@ -33,9 +33,8 @@ i18n
         escapeValue: false // react already safes from xss
       }
     },
-    (err, t) => {
+    (err) => {
       if (err) return console.log('something went wrong loading', err)
-      t('key') // -> same as i18next.t
     }
   )
 

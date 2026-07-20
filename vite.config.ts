@@ -1,30 +1,32 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import react, { reactCompilerPreset } from '@vitejs/plugin-react'
 import Pages from 'vite-plugin-pages'
+import babel from '@rolldown/plugin-babel'
 import * as path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
-    alias: [
-      { find: /^~/, replacement: '' }, // 解决 vite 不支持 less 文件以 ～ 开头引入的问题
-      { find: '@', replacement: path.resolve(__dirname, 'src') }
-    ]
+    alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }]
   },
   plugins: [
-    react(),
+    react({
+      include: /\.(mdx|js|jsx|ts|tsx)$/,
+      exclude: [/\/pdf\//, /\/node_modules\//]
+    }),
+    babel({
+      exclude: [/\/pdf\//, /\/src\/store\//, /\/node_modules\//],
+      presets: [reactCompilerPreset()],
+      plugins: [['@babel/plugin-proposal-decorators', { version: 'legacy' }]]
+    }),
     Pages({
+      importMode: 'async',
       dirs: 'src/views',
-      moduleId: '@@react-pages' // 因 less ～ 引入方式解决影响路由系统的默认文件 ～react-pages，故更改别名
+      extensions: ['tsx'],
+      exclude: ['**/components/**/*.tsx'],
+      moduleId: '～react-pages'
     })
   ],
-  css: {
-    preprocessorOptions: {
-      less: {
-        javascriptEnabled: true
-      }
-    }
-  },
   server: {
     host: '127.0.0.1',
     port: 4000,

@@ -24,7 +24,7 @@ interface item {
 }
 
 const MenuPage = (props: Props) => {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
   const navigate = useNavigate()
   const { selectedMenu, setStore, openkeys } = useLocalObservable(
     () => globalStore
@@ -45,11 +45,11 @@ const MenuPage = (props: Props) => {
     }
   ]
 
-  const onSelectMenu = ({ item, selectedKeys, keyPath, domEvent }: item) => {
+  const onSelectMenu = ({ item, keyPath }: item) => {
     const { route } = item.props
     setStore('selectedMenu', keyPath || [])
     localStorage.setItem('selectedMenuRoute', route)
-    route && navigate(route)
+    if (route) navigate(route)
   }
 
   const onOpenChange = (openKeys: string[]) => {
@@ -58,12 +58,13 @@ const MenuPage = (props: Props) => {
 
   const onCollapse = (v: boolean) => {
     setCollapsed(v)
-    props.cb &&
+    if (props.cb) {
       props.cb({
         padding: '15px',
         margin: v ? '64px 0 0 80px' : '64px 0 0 200px',
         transition: 'all 0.25s'
       })
+    }
   }
   return (
     <Layout.Sider

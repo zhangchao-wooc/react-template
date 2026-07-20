@@ -4,7 +4,7 @@ import { useTranslation, Translation } from 'react-i18next'
 import { observer, useLocalObservable } from 'mobx-react'
 import { globalStore } from '@/store'
 import { CommonApi } from '@/request'
-import styles from './index.module.less'
+import styles from './index.module.css'
 
 const { Header } = Layout
 

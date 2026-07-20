@@ -12,6 +12,25 @@ class Store {
         'https://p3-passport.byteimg.com/img/user-avatar/1033133c562359e7531b2526f0649741~100x100.awebp'
     }
   }
+  @observable permissions = {
+    router: [
+      {
+        path: '/home',
+        name: '首页',
+        auth: ['admin']
+      },
+      {
+        path: '/list',
+        name: '列表页',
+        auth: ['admin']
+      },
+      {
+        path: '/user',
+        name: '用户管理',
+        auth: ['guest']
+      }
+    ]
+  }
 
   // 数据更改后触发页面响应
   constructor() {
@@ -24,7 +43,7 @@ class Store {
   // }
 
   @action.bound
-  setStore(key: string, v: string[]) {
+  setStore(key: string, v: any) {
     console.log('setStore', key, v)
     if (key === 'selectedMenu') {
       this.selectedMenu = v
@@ -39,6 +58,11 @@ class Store {
     if (key === 'userInfo') {
       this.userInfo = v
       localStorage.setItem('userInfo', JSON.stringify(v))
+    }
+
+    if (key === 'permissions') {
+      this.permissions = v
+      localStorage.setItem('permissions', JSON.stringify(v))
     }
   }
 }

@@ -1,0 +1,44 @@
+.header {
+  min-width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.header .site-layout-background {
+  background: #fff;
+}
+
+.header .user-center {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.header .user-center .user-avatar {
+  flex: none;
+  cursor: pointer;
+}
+
+.header .user-center :global(.ant-avatar) {
+  background-color: #fff;
+}
+
+.header .user-info-element {
+  display: grid;
+  place-items: center;
+  gap: 10px;
+}
+
+.header .user-info-element :global(.ant-btn) {
+  width: 100%;
+}

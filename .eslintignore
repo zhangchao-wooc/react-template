@@ -1,9 +1,0 @@
-.vscode
-dist
-node_modules/
-.editorconfig
-.eslintignore
-.eslintrc
-.gitignore
-.prettierrc
-index.html

@@ -1,11 +1,11 @@
 .ant-layout {
   min-height: 100vh;
+}
 
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+.ant-layout .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
@@ -26,24 +26,22 @@
   display: flex;
   align-items: center;
   color: #fff;
+}
 
-  .user-avatar {
-    cursor: pointer;
-  }
+.user-center .user-avatar {
+  cursor: pointer;
+}
 
-  .ant-avatar {
-    background-color: #fff;
-  }
+.user-center .ant-avatar {
+  background-color: #fff;
 }
 
 .user-info-element {
   display: grid;
   place-items: center;
   gap: 10px;
-
-  .ant-btn {
-    width: 100%
-  }
 }
 
-
+.user-info-element .ant-btn {
+  width: 100%;
+}

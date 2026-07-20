@@ -7,7 +7,7 @@ const demo = () => {
 }
 
 const querySelect = () => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     const res = {
       msgCode: 'SUCCESS',
       responseData: [
