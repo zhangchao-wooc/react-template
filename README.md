@@ -28,6 +28,7 @@ npm run dev     // 启动项目
 - mobx + mobx-react 作为状态管理器
 - vite + vite-plugin-pages（自动生成路由）
 - antd 6 + @ant-design/icons 的 UI
+- i18n 使用 BCP 47 标准
 - React Compiler + Rolldown Babel 编译链
 - axios 接口请求
 - husky + lint-staged + commitlint + eslint + stylelint + prettier 校验代码、commit-msg 的提交规范及美化代码。保持团队代码风格与提交规范一致

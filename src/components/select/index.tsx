@@ -59,19 +59,17 @@ function DebounceSelect<
       {props.customProps?.isForm ? (
         <Form.Item {...props.formProps}>
           <Select
-            filterOption={false}
-            onSearch={debounceFetcher}
             notFoundContent={fetching ? <Spin size="small" /> : null}
             {...props.selectProps}
+            showSearch={{ filterOption: false, onSearch: debounceFetcher }}
             options={options}
           />
         </Form.Item>
       ) : (
         <Select
-          filterOption={false}
-          onSearch={debounceFetcher}
           notFoundContent={fetching ? <Spin size="small" /> : null}
           {...props.selectProps}
+          showSearch={{ filterOption: false, onSearch: debounceFetcher }}
           options={options}
         />
       )}

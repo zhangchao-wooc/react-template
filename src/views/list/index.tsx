@@ -18,7 +18,10 @@ interface EditableRowProps {
   index: number
 }
 
-const EditableRow: React.FC<EditableRowProps> = ({ index: _index, ...props }) => {
+const EditableRow: React.FC<EditableRowProps> = ({
+  index: _index,
+  ...props
+}) => {
   const [form] = Form.useForm()
   return (
     <Form form={form} component={false}>

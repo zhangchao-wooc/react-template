@@ -1,4 +1,4 @@
-import { Statistic, Row, Col, Button, Input, message, Form } from 'antd'
+import { Statistic, Row, Col, Button, Input, message, Form, Space } from 'antd'
 import { observer, useLocalObservable } from 'mobx-react'
 import { useTranslation } from 'react-i18next'
 import { HomeApi } from '@/request'
@@ -40,7 +40,7 @@ function Home() {
           </Button>
         </Col>
         <Col span={12}>
-          <Input.Group compact>
+          <Space.Compact>
             <Input
               style={{ width: 'calc(100% - 200px)' }}
               value={localStore.activeUsers}
@@ -50,7 +50,7 @@ function Home() {
             <Button type="primary" onClick={() => localStore.set(0)}>
               {t('common.reset')}
             </Button>
-          </Input.Group>
+          </Space.Compact>
         </Col>
       </Row>
       <Row gutter={16}>

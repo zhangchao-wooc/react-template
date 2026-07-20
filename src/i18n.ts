@@ -11,7 +11,8 @@ export const i18nReady = i18n
   .init(
     {
       debug: import.meta.env.WOOC_ENV === 'development',
-      load: 'languageOnly',
+      load: 'currentOnly',
+      supportedLngs: ['zh-CN', 'en-US'],
       fallbackLng: 'en-US',
       backend: {
         loadPath: import.meta.env.WOOC_I18N_LOADPATH,
